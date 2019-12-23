@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import shlex
 import asyncio
 
 import aiohttp
@@ -9,8 +8,7 @@ from parsel import Selector
 
 START_URL = 'http://www.classicbookshelf.com/library/'
 TEXT_XPATH = '//p[position() >= 2 and position() < last() - 1]/text()'
-MAX_CONN = 50
-MAX_TASKS = 10
+MAX_CONN = 50 # max number of parallel HTTP connections
 
 
 class Scraper:
@@ -53,7 +51,6 @@ class Scraper:
 
         bu = book_url.split('/')
         title, author = bu[-2], bu[-3]
-        author = bu[-4]
         filename = '{}-{}.txt'.format(author, title)
         filename = os.path.join(self.workdir, filename)
 
