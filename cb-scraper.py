@@ -8,7 +8,7 @@ from parsel import Selector
 
 START_URL = 'http://www.classicbookshelf.com/library/'
 TEXT_XPATH = '//p[position() >= 2 and position() < last() - 1]/text()'
-MAX_CONN = 50 # max number of parallel HTTP connections
+MAX_CONN = 25 # max number of parallel HTTP connections
 
 
 class Scraper:
