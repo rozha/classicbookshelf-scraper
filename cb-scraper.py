@@ -59,14 +59,14 @@ class Scraper:
         print(book_url, '->', '/'.join(filename.split('/')[-2:]))
 
     async def get_book_list(self, url):
-        book_urls = []
+        urls = []
         sel = await self.__get_selector(url)
 
         for book_url in sel.xpath('//a/@href').getall():
             if book_url.startswith(url):
-                book_urls.append(book_url)
+                urls.append(book_url)
 
-        return book_urls
+        return urls
 
     async def parse_authors(self):
         book_urls = []
